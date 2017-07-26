@@ -91,6 +91,11 @@ ADD     ./grafana/export-datasources-and-dashboards.sh /src/
 ADD     ./nginx/nginx.conf /etc/nginx/nginx.conf
 ADD     ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+#Add missing directory
+RUN mkdir -p /opt/graphite/storage/log/webapp && \
+    touch /opt/graphite/storage/log/webapp/info.log && \
+    chmod -R a+w /opt/graphite/storage/log/webapp/
+
 
 # ---------------- #
 #   Expose Ports   #
